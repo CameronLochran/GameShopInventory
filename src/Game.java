@@ -5,7 +5,7 @@ public class Game {
     private double price;
     private String consoleType;
     private int quantity;
-    private int gameId;
+    private static int gameId;
 
     public Game(int gameId, String nameOfGame, int releaseYear, String consoleType, int quantity) {
         this.gameId = gameId;
@@ -49,7 +49,21 @@ public class Game {
         return quantity;
     }
 
-    public int getGameId() {
+    public static int getGameId() {
         return gameId;
     }
+
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setNameOfGame(String nameOfGame) {
+        this.nameOfGame = nameOfGame;
+    }
+
 }

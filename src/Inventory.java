@@ -36,6 +36,7 @@ public class Inventory extends Game {
      */
     public void addStock(Game game){
         games.add(game);
+
     }
 
     /**
@@ -65,24 +66,20 @@ public class Inventory extends Game {
         return false;
     }
 
-    public void getAllGames(){
+    public boolean getAllGames(){
         if (games.isEmpty()){
             System.out.println("No games in stock");
-        }else System.out.println("Games in stock: ");
-        for (Game game: games)
-        {
-            System.out.println(game);
+        }else if (!games.isEmpty()){
+            System.out.println("Games in stock: ");
+            for (Game game: games){
+                System.out.println(game);
+            }
         }
+
+        return false;
     }
 
     // method for stock per game max 10
-    public boolean isStockFull(Game game) {
-        if (game.getQuantity() > maxQuantity) {
-            System.out.println("Stock is full for this game." );
-            return true;
-        }
-        return false;
-    }
 
     /**
      * Checks if the quantity exceeds 10 and throws an exception if it does.
@@ -90,15 +87,14 @@ public class Inventory extends Game {
      * @param quantity
      */
 
-    public void checkQuantity(int quantity) {
+    public void checkStockLimit(int quantity) {
         try {
-            if (quantity > 10) {
-                throw new IllegalArgumentException("Cannot order more than 10 games at a time.");
+            if (quantity > maxQuantity) {
+                throw new IllegalArgumentException("Quantity exceeds maximum limit of " + maxQuantity);
             }
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Please restart the program and enter a valid quantity.");
-            System.exit(0);
+            System.out.println("Error: " + e.getMessage());
+            System.exit(1);
         }
     }
 }
