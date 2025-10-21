@@ -17,7 +17,7 @@ public class Main {
         Game game8 = new Game(1241, "Shadow Agents", 2019, 49.99, "Xbox", 3);
         Game game9 = new Game(1242, "Retro Rally", 1999, 14.99, "PC", 8);
         Game game10 = new Game(1243, "Chrono Heroes", 2016, 39.50, "Switch", 6);
-
+//
         Inventory.games.add(game1);
         Inventory.games.add(game2);
         Inventory.games.add(game3);
