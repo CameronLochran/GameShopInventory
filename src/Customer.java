@@ -19,7 +19,7 @@ public class Customer{
     private LocalDate discountExpiresOn = null;
 
     // === Static "database" of customers ===
-    private static final List<Customer> customerList = new ArrayList<>();
+    private final List<Customer> customerList = new ArrayList<>();
 
     // === Discount policy ===
     private static final double NEXT_PURCHASE_DISCOUNT_RATE = 0.10;      // 10%
