@@ -7,14 +7,13 @@ public class Inventory extends Game {
 
     /**
      * Constructor to initialize the inventory with an empty list of games.
-     *
      * @param nameOfGame
      * @param releaseYear
      * @param consoleType
      * @param gameId
      */
     public Inventory(String nameOfGame, int releaseYear, double price , String consoleType, int gameId, int quantity) {
-        super(gameId, nameOfGame, releaseYear, consoleType, quantity);
+        super(gameId, nameOfGame, releaseYear, price ,consoleType, quantity);
         games = new ArrayList<>();
     }
 
@@ -23,10 +22,6 @@ public class Inventory extends Game {
         return "Inventory{" +
                 "games=" + games +
                 '}';
-    }
-
-    public ArrayList<Game> getGames() {
-        return games;
     }
 
     /**
@@ -78,8 +73,6 @@ public class Inventory extends Game {
 
         return false;
     }
-
-    // method for stock per game max 10
 
     /**
      * Checks if the quantity exceeds 10 and throws an exception if it does.

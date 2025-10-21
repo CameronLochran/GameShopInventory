@@ -6,12 +6,37 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Inventory inventory = new Inventory(" ", 0, 0.0, " ", 0, 0); // shared inventory
+
+        Game game1 = new Game(1234, "Shooting Stars", 2005, 33.0, "Switch", 3);
+        Game game2 = new Game(1235, "Mystic Quest", 2012, 45.0, "PlayStation", 5);
+        Game game3 = new Game(1236, "Pixel Racer X", 2018, 39.99, "Xbox", 4);
+        Game game4 = new Game(1237, "Kingdom Clash", 2020, 59.99, "Switch", 6);
+        Game game5 = new Game(1238, "Sky Fortress", 2015, 29.99, "PC", 2);
+        Game game6 = new Game(1239, "Ocean Odyssey", 2011, 19.99, "Wii", 5);
+        Game game7 = new Game(1240, "Neon Nights", 2022, 54.99, "PlayStation", 7);
+        Game game8 = new Game(1241, "Shadow Agents", 2019, 49.99, "Xbox", 3);
+        Game game9 = new Game(1242, "Retro Rally", 1999, 14.99, "PC", 8);
+        Game game10 = new Game(1243, "Chrono Heroes", 2016, 39.50, "Switch", 6);
+
+        Inventory.games.add(game1);
+        Inventory.games.add(game2);
+        Inventory.games.add(game3);
+        Inventory.games.add(game4);
+        Inventory.games.add(game5);
+        Inventory.games.add(game6);
+        Inventory.games.add(game7);
+        Inventory.games.add(game8);
+        Inventory.games.add(game9);
+        Inventory.games.add(game10);
+
         decision(input, inventory);
     }
 
     static void CustomerMenu(Scanner input, Inventory inventory) {
         ArrayList<String> gamesBought = new ArrayList<>();
         ArrayList<String> gamesTradedIn = new ArrayList<>();
+
+
 
         input.nextLine(); // clear newline
         System.out.print("Enter your name: ");
@@ -39,9 +64,7 @@ public class Main {
             }
         } else if (action == 2) {
             input.nextLine(); // consume newline
-            System.out.print("Enter the name of the game to trade in: ");
-            String gameName = input.nextLine();
-            customer.tradeInGame(gameName);
+            customer.tradeInGame(inventory);
         } else {
             System.out.println("No action selected.");
         }
@@ -77,10 +100,13 @@ public class Main {
                     System.out.print("Enter console type: ");
                     String console = input.nextLine();
 
+                    System.out.println("Enter a price for the game: ");
+                    double price = input.nextDouble();
+
                     System.out.print("Enter game ID: ");
                     int gameId = input.nextInt();
 
-                    inventory.addStock(new Game(gameId, name, year, console, quantity));
+                    inventory.addStock(new Game(gameId, name, year, price, console, quantity));
                     System.out.println("Game added successfully!");
                     break;
 
@@ -140,4 +166,5 @@ public class Main {
             }
         } while (userType != 3);
     }
+
 }

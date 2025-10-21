@@ -7,11 +7,11 @@ public class Game {
     private int quantity;
     private static int gameId;
 
-    public Game(int gameId, String nameOfGame, int releaseYear, String consoleType, int quantity) {
+    public Game(int gameId, String nameOfGame, int releaseYear, double price, String consoleType, int quantity) {
         this.gameId = gameId;
         this.nameOfGame = nameOfGame;
         this.releaseYear = releaseYear;
-        this.price = this.price;
+        this.price = price;
         this.consoleType = consoleType;
         this.quantity = quantity;
 
@@ -53,17 +53,5 @@ public class Game {
         return gameId;
     }
 
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public void setNameOfGame(String nameOfGame) {
-        this.nameOfGame = nameOfGame;
-    }
 
 }
