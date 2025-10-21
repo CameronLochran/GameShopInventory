@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Inventory extends Game {
 
-    public static ArrayList<Game> games;
+    private ArrayList<Game> games;
     private int maxQuantity = 10;
 
     /**

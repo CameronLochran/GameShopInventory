@@ -52,18 +52,8 @@ public class Customer{
         this.balance = DEFAULT_BALANCE;
     }
 
-    // === BUY GAME ===
+
     public void buyGame(Game game, Inventory inventory) {
-
-        if (game == null) {
-            System.out.println("Game not found in inventory.");
-            return;
-        }
-
-        if (game.getQuantity() <= 0) {
-            System.out.println("Out of stock: " + game.getNameOfGame());
-            return;
-        }
 
         // Check for discount
         boolean discountApplied = isDiscountActive();
@@ -122,6 +112,9 @@ public class Customer{
 
         double price = sc.nextDouble();
 
+        System.out.println("Enter game id: ");
+        int id = sc.nextInt();
+
         // --- Register trade-in ---
         gamesTradedIn.add(gameName);
 
@@ -129,9 +122,8 @@ public class Customer{
         balance += price;
         System.out.println("Game traded in for £" + fmt(price) + ". Your new balance: £" + fmt(balance));
 
-        // Add traded-in game to the shop inventory
-        int newGameId = Game.getGameId();
-        Game tradedIn = new Game(newGameId, gameName, releaseYear, price, consoleType, quantity);
+
+        Game tradedIn = new Game(id, gameName, releaseYear, price, consoleType, quantity);
         inventory.addStock(tradedIn);
 
         // Grant discount after trade-in
@@ -146,7 +138,7 @@ public class Customer{
 
         if (choice.equals("yes")) {
             System.out.print("Enter the Game ID you want to buy: ");
-            int id = sc.nextInt();
+            id = sc.nextInt();
             Game discountedGame = inventory.findById(id);
 
             if (discountedGame != null) {

@@ -5,7 +5,7 @@ public class Game {
     private double price;
     private String consoleType;
     private int quantity;
-    private static int gameId;
+    private int gameId;
 
     public Game(int gameId, String nameOfGame, int releaseYear, double price, String consoleType, int quantity) {
         this.gameId = gameId;
@@ -14,7 +14,6 @@ public class Game {
         this.price = price;
         this.consoleType = consoleType;
         this.quantity = quantity;
-
     }
 
     @Override
@@ -49,7 +48,7 @@ public class Game {
         return quantity;
     }
 
-    public static int getGameId() {
+    public int getGameId() {
         return gameId;
     }
 

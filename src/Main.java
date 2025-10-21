@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        Inventory inventory = new Inventory(" ", 0, 0.0, " ", 0, 0); // shared inventory
+        Inventory i = new Inventory(" ", 0, 0.0, " ", 0, 0); // shared inventory
 
         Game game1 = new Game(1234, "Shooting Stars", 2005, 33.0, "Switch", 3);
         Game game2 = new Game(1235, "Mystic Quest", 2012, 45.0, "PlayStation", 5);
@@ -17,26 +17,24 @@ public class Main {
         Game game8 = new Game(1241, "Shadow Agents", 2019, 49.99, "Xbox", 3);
         Game game9 = new Game(1242, "Retro Rally", 1999, 14.99, "PC", 8);
         Game game10 = new Game(1243, "Chrono Heroes", 2016, 39.50, "Switch", 6);
-//
-        Inventory.games.add(game1);
-        Inventory.games.add(game2);
-        Inventory.games.add(game3);
-        Inventory.games.add(game4);
-        Inventory.games.add(game5);
-        Inventory.games.add(game6);
-        Inventory.games.add(game7);
-        Inventory.games.add(game8);
-        Inventory.games.add(game9);
-        Inventory.games.add(game10);
 
-        decision(input, inventory);
+        i.addStock(game1);
+        i.addStock(game2);
+        i.addStock(game3);
+        i.addStock(game4);
+        i.addStock(game5);
+        i.addStock(game6);
+        i.addStock(game7);
+        i.addStock(game8);
+        i.addStock(game9);
+        i.addStock(game10);
+
+        decision(input, i);
     }
 
     static void CustomerMenu(Scanner input, Inventory inventory) {
         ArrayList<String> gamesBought = new ArrayList<>();
         ArrayList<String> gamesTradedIn = new ArrayList<>();
-
-
 
         input.nextLine(); // clear newline
         System.out.print("Enter your name: ");
