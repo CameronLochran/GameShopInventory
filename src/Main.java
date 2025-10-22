@@ -1,11 +1,25 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Main class to run the Inventory Management System for a video game store.
+ * Provides menus for both managers and customers to interact with the inventory.
+ *
+ * @author Cameron Lochran
+ */
 public class Main {
 
+    /**
+     * Entry point for the Inventory Management System application.
+     * Initializes the inventory with sample games and launches the interactive menu.
+     *
+     * @param args Command-line arguments (not used)
+     */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Inventory i = new Inventory(" ", 0, 0.0, " ", 0, 0); // shared inventory
+
+        // Pre-populate inventory with some games
 
         Game game1 = new Game(1234, "Shooting Stars", 2005, 33.0, "Switch", 3);
         Game game2 = new Game(1235, "Mystic Quest", 2012, 45.0, "PlayStation", 5);
@@ -32,6 +46,13 @@ public class Main {
         decision(input, i);
     }
 
+    // generate java doc for methods
+
+    /**
+     * Displays the customer menu for buying or trading in games.
+     * @param input Scanner object to take user input.
+     * @param inventory Inventory object to manage games in stock.
+     */
     static void CustomerMenu(Scanner input, Inventory inventory) {
         ArrayList<String> gamesBought = new ArrayList<>();
         ArrayList<String> gamesTradedIn = new ArrayList<>();
@@ -72,6 +93,11 @@ public class Main {
         decision(input, inventory); // go back to main menu
     }
 
+    /**
+     * Displays the manager menu for ordering, selling, and viewing games in stock.
+     * @param input Scanner object to take user input.
+     * @param inventory Inventory object to manage games in stock.
+     */
     static void ManagerMenu(Scanner input, Inventory inventory) {
         int option;
 
@@ -136,6 +162,11 @@ public class Main {
         } while (option != 4);
     }
 
+    /**
+     * Displays the main menu for selecting user type (Manager or Customer) or quitting.
+     * @param input Scanner object to take user input.
+     * @param inventory Inventory object to manage games in stock.
+     */
     static void decision(Scanner input, Inventory inventory) {
         int userType;
 

@@ -3,6 +3,10 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
 
+/**
+ * Customer class representing a customer in the video game store.
+ */
+
 public class Customer{
 
 
@@ -25,9 +29,12 @@ public class Customer{
     private static final double NEXT_PURCHASE_DISCOUNT_RATE = 0.10;      // 10%
     private static final Period NEXT_PURCHASE_DISCOUNT_VALIDITY = Period.ofDays(30);
 
-    private static final double DEFAULT_BALANCE = 0.0;
+    private static final double DEFAULT_BALANCE = 100.0;
 
-
+    /**
+     * toString method to display customer information
+     * @return string representation of customer
+     */
     @Override
     public String toString() {
         return "Customer{" +
@@ -41,7 +48,15 @@ public class Customer{
                 '}';
     }
 
-    // === Constructor ===
+    /**
+     * Constructor to initialize a Customer object with its details.
+     * @param name Name of the customer
+     * @param address Address of the customer
+     * @param gamesBought List of games bought by the customer
+     * @param gamesTradedIn List of games traded in by the customer
+     * @param customerID Unique identifier for the customer
+     */
+
     public Customer(String name, String address, List<String> gamesBought, List<String> gamesTradedIn, int customerID) {
         this.name = name;
         this.address = address;
@@ -52,6 +67,11 @@ public class Customer{
         this.balance = DEFAULT_BALANCE;
     }
 
+    /**
+     * Method to buy a game, applying discount if available.
+     * @param game Game object to be purchased
+     * @param inventory Inventory object to manage stock
+     */
 
     public void buyGame(Game game, Inventory inventory) {
 
@@ -87,7 +107,11 @@ public class Customer{
         System.out.println("Purchased: " + game.getNameOfGame() + " for £" + fmt(effectivePrice) + ". Remaining balance: £" + fmt(balance));
     }
 
-    // === TRADE IN GAME + IMMEDIATE DISCOUNT PURCHASE ===
+    /***
+     * Method to trade in a game, adding funds and granting discount.
+     * @param inventory Inventory object to manage stock
+     */
+
     public void tradeInGame(Inventory inventory) {
         Scanner sc = new Scanner(System.in);
         String gameName;
@@ -153,7 +177,11 @@ public class Customer{
     }
 
 
-    // === DISCOUNT LOGIC ===
+    /**
+     * Checks if the next purchase discount is active and valid.
+     * @return true if discount is active, false otherwise
+     */
+
     private boolean isDiscountActive() {
         if (!hasNextPurchaseDiscount) return false;
         if (discountExpiresOn == null) return true;
@@ -164,11 +192,18 @@ public class Customer{
         return true;
     }
 
+    /**
+     * Grants a next purchase discount to the customer.
+     */
+
     private void grantNextPurchaseDiscount() {
         this.hasNextPurchaseDiscount = true;
         this.discountExpiresOn = LocalDate.now().plus(NEXT_PURCHASE_DISCOUNT_VALIDITY);
     }
 
+    /**
+     * Clears the next purchase discount for the customer.
+     */
     private void clearNextPurchaseDiscount() {
         this.hasNextPurchaseDiscount = false;
         this.discountExpiresOn = null;
@@ -179,31 +214,31 @@ public class Customer{
     private static String fmt(double v) { return String.format("%.2f", v); }
 
 
-    public void returningCustomerCheck(){
-        if (customerList.size() < 2) {
-            System.out.println("Not enough customers to compare.");
-            return;
-        }
-
-        boolean duplicateFound = false;
-
-        for (int i = 0; i < customerList.size(); i++) {
-            Customer c1 = customerList.get(i);
-
-            for (int j = i + 1; j < customerList.size(); j++) {
-                Customer c2 = customerList.get(j);
-
-                if (c1.customerID == c2.customerID) {
-                    System.out.println("Duplicate ID found: " + c1.customerID);
-                    System.out.println(" → " + c1.name + " and " + c2.name);
-                    duplicateFound = true;
-                }
-            }
-        }
-
-        if (!duplicateFound) {
-            System.out.println("No duplicate customer IDs found.");
-        }
-    }
+//    public void returningCustomerCheck(){
+//        if (customerList.size() < 2) {
+//            System.out.println("Not enough customers to compare.");
+//            return;
+//        }
+//
+//        boolean duplicateFound = false;
+//
+//        for (int i = 0; i < customerList.size(); i++) {
+//            Customer c1 = customerList.get(i);
+//
+//            for (int j = i + 1; j < customerList.size(); j++) {
+//                Customer c2 = customerList.get(j);
+//
+//                if (c1.customerID == c2.customerID) {
+//                    System.out.println("Duplicate ID found: " + c1.customerID);
+//                    System.out.println(" → " + c1.name + " and " + c2.name);
+//                    duplicateFound = true;
+//                }
+//            }
+//        }
+//
+//        if (!duplicateFound) {
+//            System.out.println("No duplicate customer IDs found.");
+//        }
+//    }
 
 }

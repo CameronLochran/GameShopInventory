@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 
+/**
+ * Inventory class to manage a collection of games.
+ */
+
 public class Inventory extends Game {
 
     private ArrayList<Game> games;
@@ -9,6 +13,7 @@ public class Inventory extends Game {
      * Constructor to initialize the inventory with an empty list of games.
      * @param nameOfGame
      * @param releaseYear
+     * @param price
      * @param consoleType
      * @param gameId
      */
@@ -17,6 +22,10 @@ public class Inventory extends Game {
         games = new ArrayList<>();
     }
 
+    /**
+     * Returns a string representation of the inventory.
+     * @return a string listing all games in the inventory
+     */
     @Override
     public String toString() {
         return "Inventory{" +
@@ -61,6 +70,10 @@ public class Inventory extends Game {
         return false;
     }
 
+    /**
+     * Displays all games in the inventory.
+     * @return false after displaying the games
+     */
     public boolean getAllGames(){
         if (games.isEmpty()){
             System.out.println("No games in stock");
